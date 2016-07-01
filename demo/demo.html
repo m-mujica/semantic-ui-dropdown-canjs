@@ -13,8 +13,11 @@
 
     <div class="four wide column">
       <h4 class="ui header">Dropdown</h4>
-
-      <div class="ui dropdown" semantic-dropdown>
+      <div>
+        <a href="javascript://" ($click)="openDropdown">Open</a>
+        <a href="javascript://" ($click)="closeDropdown">Close</a>
+      </div>
+      <div class="ui dropdown" semantic-dropdown {{#if firstIsOpen}}show{{/if}}>
         <div class="text">File</div>
         <i class="dropdown icon"></i>
         <div class="menu">
@@ -1812,6 +1815,13 @@
 <!-- The data for the above template. -->
 <script src="../node_modules/steal/steal.js" main="can/view/autorender/">
   $('#demo').viewModel({
-    selectedUser: null
+    selectedUser: null,
+    firstIsOpen: false,
+    openDropdown(){
+      this.attr('firstIsOpen', true);
+    },
+    closeDropdown(){
+      this.attr('firstIsOpen', false);
+    }
   });
 </script>
