@@ -21,7 +21,7 @@ npm install semantic-ui-dropdown-canjs --save
 
 ## Usage
 To use it, simply add the `semantic-dropdown` attribute to a Semantic UI Dropdown and bind to the hidden input.
-```
+```html
 <div class="ui selection dropdown" semantic-dropdown>
   <input type="hidden" {($value)}="gender">
   <i class="dropdown icon"></i>
