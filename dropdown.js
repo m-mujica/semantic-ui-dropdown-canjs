@@ -19,16 +19,39 @@ can.view.attr('semantic-dropdown', function(el, attrData) {
   let attrs = getConfigObjFromAttrs(el),
     $el = $(el);
 
-  let options = {};
+  let options = {
+    action: attrs.action
+  };
+
+  function updateAttributes(ev){
+    if (ev.attributeName === 'show') {
+      let attrs = getConfigObjFromAttrs(ev.target);
+      if (attrs.show) {
+        $el.dropdown('show');
+      } else {
+        $el.dropdown('hide');
+      }
+    }
+  }
+
+  $el.bind('attributes', updateAttributes);
+
+  $el.bind('removed', function(){
+    $el.unbind('attributes', updateAttributes);
+    $el.dropdown('destroy');
+  });
 
   $el.dropdown(options);
 });
 
 function getConfigObjFromAttrs(el){
-  let attributes = [].slice.call(el.attributes);
+  let attributes = [].slice.call(el.attributes || []);
   let attrObj = {};
   attributes.map(attr => {
     attrObj[attr.name] = attr.value;
+    if (attrObj[attr.name] === '') {
+      attrObj[attr.name] = true;
+    }
   });
   return attrObj;
 }
