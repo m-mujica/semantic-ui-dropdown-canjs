@@ -19,18 +19,9 @@ can.view.attr('semantic-dropdown', function(el, attrData) {
   let attrs = getConfigObjFromAttrs(el),
     $el = $(el);
 
-  let options = {
-
-  };
+  let options = {};
 
   $el.dropdown(options);
-
-  // $el.on('focus', function(){
-  //   if(!$el.data('dropdown')){
-  //     $el.dropdown(options);
-  //     $el.click();
-  //   }
-  // });
 });
 
 function getConfigObjFromAttrs(el){
