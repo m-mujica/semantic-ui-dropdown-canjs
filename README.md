@@ -12,7 +12,7 @@ SemanticUI's CSS should be imported separately. You can use `semantic-ui-less` p
 
 See the included demo /demo/demo.html (run `npm install`, then `http-server` in the project root and browse /demo/demo.html).
 
-![Semantic UI Dropdown]()
+![Semantic UI Dropdown](images/demo2.jpg)
 
 ## Installation
 ```
