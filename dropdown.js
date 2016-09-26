@@ -2,8 +2,6 @@ import can from 'can';
 import $ from 'jquery';
 import 'semantic-ui-transition/transition';
 import 'semantic-ui-transition/transition.css';
-import 'semantic-ui-css/components/site.css';
-import 'semantic-ui-css/components/reset.css';
 import 'semantic-ui-dropdown/dropdown.css';
 import 'semantic-ui-dropdown/dropdown';
 
