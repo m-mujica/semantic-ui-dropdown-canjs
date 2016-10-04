@@ -17,31 +17,29 @@ import 'semantic-ui-dropdown/dropdown';
  *    <input type="text" semantic-dropdown />
  */
 can.view.attr('semantic-dropdown', function(el, attrData) {
-  let attrs = getConfigObjFromAttrs(el),
-    $el = $(el);
 
-  let options = {
-    action: attrs.action
-  };
+  let attrs = getConfigObjFromAttrs(el),
+    options = getDropdownSettingsFromConfig(attrs),
+    $el = $(el);
 
   function updateAttributes(ev){
     if (ev.attributeName === 'show') {
       let attrs = getConfigObjFromAttrs(ev.target);
-      if (attrs.show) {
+      if (options.show) {
         $el.dropdown('show');
       } else {
         $el.dropdown('hide');
       }
     }
   }
-
+  
   $el.bind('attributes', updateAttributes);
 
   $el.bind('removed', function(){
     $el.unbind('attributes', updateAttributes);
     $el.dropdown('destroy');
   });
-
+  console.log(options);
   $el.dropdown(options);
 });
 
@@ -55,4 +53,18 @@ function getConfigObjFromAttrs(el){
     }
   });
   return attrObj;
+}
+
+function getDropdownSettingsFromConfig(config) {
+  const dropdownSettings = $.fn.dropdown.settings || {};
+  let settings = {};
+
+  for(let setting in dropdownSettings) {
+    let hyphenatedSetting = can.hyphenate(setting);
+
+    if(config.hasOwnProperty(hyphenatedSetting)) {
+      settings[setting] = config[hyphenatedSetting];
+    }
+  }
+  return settings;
 }
