@@ -39,7 +39,7 @@ can.view.attr('semantic-dropdown', function(el, attrData) {
     $el.unbind('attributes', updateAttributes);
     $el.dropdown('destroy');
   });
-  console.log(options);
+  
   $el.dropdown(options);
 });
 
