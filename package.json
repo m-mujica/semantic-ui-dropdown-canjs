@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-dropdown-canjs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A CanJS wrapper for Semantic UI dropdowns",
   "main": "dropdown.js",
   "scripts": {
@@ -42,6 +42,6 @@
     "testee": "^0.2.5"
   },
   "peerDependencies": {
-     "can": "^2.3.25" 
+    "can": "^2.3.25"
   }
 }
