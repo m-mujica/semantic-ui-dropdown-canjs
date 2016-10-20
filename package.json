@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/icanjs/semantic-ui-dropdown-canjs",
   "dependencies": {
-    "can": "^2.3.25",
     "semantic-ui-css": "^2.1.8",
     "semantic-ui-dropdown": "^2.2.1",
     "semantic-ui-transition": "^2.2.1"
@@ -41,5 +40,8 @@
     "steal-qunit": "^0.1.1",
     "steal-tools": "^0.16.4",
     "testee": "^0.2.5"
+  },
+  "peerDependencies": {
+     "can": "^2.3.25" 
   }
 }
