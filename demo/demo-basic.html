@@ -3,7 +3,6 @@
 <style>.demo{padding:10px 20px}.demo p{margin-top:50px}.demo .vertical.menu.popup{padding:0!important}</style>
 
 <script type="text/stache" id="demo" can-autorender>
-  <can-import from="jquery" />
   <can-import from="dropdown" />
   <can-import from="semantic-ui-css/components/site.css" />
   <can-import from="semantic-ui-css/components/reset.css" />
@@ -65,8 +64,12 @@
 </script>
 
 <!-- The data for the above template. -->
-<script src="../node_modules/steal/steal.js" main="can/view/autorender/">
-  $('#demo').viewModel({
+<script src="../node_modules/steal/steal.js" main="can-view-autorender">
+  import $ from 'jquery';
+  import canViewModel from 'can-view-model';
+  import 'can-view-import';
+  import 'can-stache-bindings';
+  canViewModel($('#demo')[0], {
     selectedUser: null,
     firstIsOpen: false,
     openDropdown(){
