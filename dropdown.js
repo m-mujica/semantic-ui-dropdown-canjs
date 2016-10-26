@@ -1,4 +1,5 @@
-import can from 'can';
+import canViewCallbacks from 'can-view-callbacks';
+import string from 'can-util/js/string/';
 import $ from 'jquery';
 import 'semantic-ui-transition/transition';
 import 'semantic-ui-transition/transition.css';
@@ -16,7 +17,7 @@ import 'semantic-ui-dropdown/dropdown';
  *    With default settings:
  *    <input type="text" semantic-dropdown />
  */
-can.view.attr('semantic-dropdown', function(el, attrData) {
+canViewCallbacks.attr('semantic-dropdown', function(el, attrData) {
 
   let attrs = getConfigObjFromAttrs(el),
     options = getDropdownSettingsFromConfig(attrs),
@@ -60,7 +61,7 @@ function getDropdownSettingsFromConfig(config) {
   let settings = {};
 
   for(let setting in dropdownSettings) {
-    let hyphenatedSetting = can.hyphenate(setting);
+    let hyphenatedSetting = string.hyphenate(setting);
 
     if(config.hasOwnProperty(hyphenatedSetting)) {
       settings[setting] = config[hyphenatedSetting];

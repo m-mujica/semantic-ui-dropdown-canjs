@@ -3,7 +3,6 @@
 <style>.demo{padding:10px 20px}.demo p{margin-top:50px}.demo .vertical.menu.popup{padding:0!important}</style>
 
 <script type="text/stache" id="demo" can-autorender>
-  <can-import from="jquery" />
   <can-import from="semantic-ui-css/components/container.css" />
   <can-import from="semantic-ui-css/components/button.css" />
   <can-import from="semantic-ui-css/components/form.css" />
@@ -947,7 +946,7 @@
     </div>
 
     <div class="six wide column">
-      <h4 className="ui header">Pointing</h4>
+      <h4 class="ui header">Pointing</h4>
       <div class="ui menu">
         <a class="item">
           Home
@@ -991,7 +990,7 @@
     </div>
 
     <div class="two wide column">
-      <h4 className="ui header">Pointing Button</h4>
+      <h4 class="ui header">Pointing Button</h4>
       <div class="ui icon top left pointing dropdown button" semantic-dropdown>
         <i class="wrench icon"></i>
         <div class="menu">
@@ -1023,7 +1022,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">With Descriptions</h4>
+      <h4 class="ui header">With Descriptions</h4>
       <div class="ui floating labeled icon dropdown button black" semantic-dropdown>
         <i class="filter icon"></i>
         <span class="text">Filter Tags</span>
@@ -1049,7 +1048,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Searchable with Labels</h4>
+      <h4 class="ui header">Searchable with Labels</h4>
       <div class="ui floating labeled icon dropdown button orange" semantic-dropdown>
         <i class="filter icon"></i>
         <span class="text">Filter</span>
@@ -1082,7 +1081,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Containing a Message</h4>
+      <h4 class="ui header">Containing a Message</h4>
       <div class="ui floating labeled icon dropdown button green" semantic-dropdown>
         <i class="filter icon"></i>
         <span class="text">Login</span>
@@ -1096,7 +1095,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">With Floated Content</h4>
+      <h4 class="ui header">With Floated Content</h4>
       <div class="ui fluid selection dropdown" semantic-dropdown>
         <i class="dropdown icon"></i>
         <span class="default text">Select Type</span>
@@ -1118,7 +1117,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">With Images</h4>
+      <h4 class="ui header">With Images</h4>
       <div class="ui floating labeled icon dropdown button purple" semantic-dropdown>
         <i class="add user icon"></i>
         <span class="text">Add User</span>
@@ -1158,7 +1157,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Selection Loading Dropdown</h4>
+      <h4 class="ui header">Selection Loading Dropdown</h4>
       <div class="ui loading small pink selection dropdown" semantic-dropdown>
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -1170,7 +1169,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Button Loading Dropdown</h4>
+      <h4 class="ui header">Button Loading Dropdown</h4>
       <div class="ui loading small pink button dropdown" semantic-dropdown>
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -1182,7 +1181,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Standard Loading Dropdown</h4>
+      <h4 class="ui header">Standard Loading Dropdown</h4>
       <div class="ui loading small pink dropdown" semantic-dropdown>
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -1194,7 +1193,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Disabled</h4>
+      <h4 class="ui header">Disabled</h4>
       <div class="ui disabled dropdown" semantic-dropdown>
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -1206,7 +1205,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Disabled Item</h4>
+      <h4 class="ui header">Disabled Item</h4>
       <div class="ui dropdown" semantic-dropdown>
         Disabled Item <i class="dropdown icon"></i>
         <div class="menu">
@@ -1218,7 +1217,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Full width, nested in a menu</h4>
+      <h4 class="ui header">Full width, nested in a menu</h4>
       <div class="ui vertical menu">
         <a class="item">Link 1</a>
         <a class="item">Link 2</a>
@@ -1238,7 +1237,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Using Max Selections</h4>
+      <h4 class="ui header">Using Max Selections</h4>
       <div class="ui sub header">Selection</div>
       <select multiple="" name="skills" class="ui fluid normal dropdown" semantic-dropdown>
         <option value="">Skills</option>
@@ -1764,7 +1763,7 @@
     </div>
 
     <div class="four wide column">
-      <h4 className="ui header">Tagging and User Additions</h4>
+      <h4 class="ui header">Tagging and User Additions</h4>
       <div class="ui sub header">Single</div>
           <select name="skills" class="ui fluid search dropdown" semantic-dropdown>
             <option value="">Skills</option>
@@ -1825,8 +1824,12 @@
 </script>
 
 <!-- The data for the above template. -->
-<script src="../node_modules/steal/steal.js" main="can/view/autorender/">
-  $('#demo').viewModel({
+<script src="../node_modules/steal/steal.js" main="can-view-autorender">
+  import $ from 'jquery';
+  import canViewModel from 'can-view-model';
+  import 'can-view-import';
+  import 'can-stache-bindings';
+  canViewModel($('#demo')[0], {
     selectedUser: null,
     firstIsOpen: false,
     openDropdown(){
