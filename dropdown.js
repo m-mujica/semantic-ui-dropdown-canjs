@@ -1,5 +1,6 @@
-import canViewCallbacks from 'can-view-callbacks';
-import string from 'can-util/js/string/';
+import callbacks from 'can-view-callbacks';
+import domMutate from "can-dom-mutate";
+import kebabCase from 'lodash.kebabcase';
 import $ from 'jquery';
 import 'semantic-ui-transition/transition';
 import 'semantic-ui-transition/transition.css';
@@ -17,8 +18,7 @@ import 'semantic-ui-dropdown/dropdown';
  *    With default settings:
  *    <input type="text" semantic-dropdown />
  */
-canViewCallbacks.attr('semantic-dropdown', function(el, attrData) {
-
+callbacks.attr('semantic-dropdown', function(el, attrData) {
   let attrs = getConfigObjFromAttrs(el),
     options = getDropdownSettingsFromConfig(attrs),
     $el = $(el);
@@ -26,21 +26,15 @@ canViewCallbacks.attr('semantic-dropdown', function(el, attrData) {
   function updateAttributes(ev){
     if (ev.attributeName === 'show') {
       let attrs = getConfigObjFromAttrs(ev.target);
-      if (options.show) {
+      if (attrs.show) {
         $el.dropdown('show');
       } else {
         $el.dropdown('hide');
       }
     }
   }
-  
-  $el.bind('attributes', updateAttributes);
 
-  $el.bind('removed', function(){
-    $el.unbind('attributes', updateAttributes);
-    $el.dropdown('destroy');
-  });
-  
+  domMutate.onNodeAttributeChange(el, updateAttributes);
   $el.dropdown(options);
 });
 
@@ -61,7 +55,7 @@ function getDropdownSettingsFromConfig(config) {
   let settings = {};
 
   for(let setting in dropdownSettings) {
-    let hyphenatedSetting = string.hyphenate(setting);
+    let hyphenatedSetting = kebabCase(setting);
 
     if(config.hasOwnProperty(hyphenatedSetting)) {
       settings[setting] = config[hyphenatedSetting];
